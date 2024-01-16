@@ -1,0 +1,35 @@
+// Base
+@use "base/reset";
+
+// Components
+@use "components/gamecard";
+@use 'components/gamelist';
+@use "components/addgamemodal";
+
+// Abstracts
+@use "abstracts/tipography";
+
+// Themes
+@import "themes/dark";
+
+* {
+	font-family: #{$--theme-font};
+	user-select: none;
+}
+
+body {
+	border-radius: 12px;
+	background-color: #{$--theme-primary};
+
+	#root {
+		min-height: 100vh;
+	}
+
+	main {
+		height:  100%
+	}
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}

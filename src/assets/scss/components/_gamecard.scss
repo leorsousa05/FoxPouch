@@ -1,0 +1,63 @@
+@import '../themes/dark';
+
+.gamecard {
+	margin: 32px;
+	margin-bottom: 0;
+	width: 240px;
+	display: flex;
+	border-radius: 2px;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 4px;
+	transition: .2s ease-in-out;
+
+	&__image {
+		width: 100%;
+		image-rendering: pixelated;
+		height: 300px;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	&__infos {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-around;
+		width: 100%;
+
+		&__title {
+			color: #{$--theme-foreground};
+			font-family: #{$--theme-font};
+			font-size: 20px;
+			font-weight: 600;
+			text-align: center;
+			padding: 12px 0;
+		}
+	}
+
+	&__button_group {
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 16px;
+		gap: 12px;
+
+		&__button {
+			cursor: pointer;
+			background: transparent;
+			color: #{$--theme-foreground};
+			background-color: #{$--theme-primary};
+			padding: 6px 8px;
+			border-radius: 2px;
+			border: 1px solid #{$--theme-details};
+			margin: 0 0 8px 0;
+			transition: .2s transform;
+
+			&:hover {
+				transform: scale(1.1);
+				border: 1px solid #{$--theme-secondary};
+			}
+
+		}
+	}
+}

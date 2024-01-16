@@ -1,0 +1,43 @@
+@import "../themes/dark";
+
+.gamelist {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 22px;
+	position: relative;
+	height: 100%;
+
+	&__addbutton {
+		cursor: pointer;
+		background: transparent;
+		position: fixed;
+		background-color: #{$--theme-primary};
+		border: 2px solid #{$--theme-secondary};
+		padding: 6px 8px;
+		border-radius: 2px;
+		border: 0;
+		right: 4%;
+		bottom: 6%;
+
+		&:hover svg {
+			transform: scale(1.3);
+
+			path {
+				fill: #{$--theme-secondary};
+			}
+		}
+
+		svg {
+			transition: .1s ease-in-out;
+			height: 30px;
+
+			path {
+				fill: #{$--theme-details};
+				transition: transform .2s;
+			}
+		}
+	}	
+
+	
+}
