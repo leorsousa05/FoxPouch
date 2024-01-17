@@ -1,20 +1,18 @@
-import { GamesData } from "./GameList";
-import { Dispatch, SetStateAction } from "react";
+import { FC } from "react";
 import { invoke } from "@tauri-apps/api";
+import { useGamesDataContext } from "../contexts/GamesDataContext";
 
-interface Props {
+interface GameInfo {
 	gameImage: string
 	gameTitle: string
 	gamePath: string
-	localGamesList: GamesData[]
-	localGamesListSetter: Dispatch<SetStateAction<GamesData[]>>
 }
 
-export const GameCard: React.FC<Props> = ({ gameImage, gameTitle, gamePath, localGamesList, localGamesListSetter }: Props) => {
+export const GameCard: FC<GameInfo> = ({ gameImage, gameTitle, gamePath }) => {
 
+	const { gamesDataList, setGamesDataList } = useGamesDataContext();
 
 	const handleExecute = async () => {
-		console.log(gamePath);
 		invoke("execute_game", { path: gamePath })
 			.then((res) => {
 				console.log(res);
@@ -25,8 +23,8 @@ export const GameCard: React.FC<Props> = ({ gameImage, gameTitle, gamePath, loca
 	}
 
 	const handleDelete = () => {
-		const deletedItemList = localGamesList.filter(game => game.name !== gameTitle);
-		localGamesListSetter(deletedItemList);
+		const deletedItemList = gamesDataList.filter(game => game.name !== gameTitle);
+		setGamesDataList(deletedItemList);
 		localStorage.setItem("games", JSON.stringify(deletedItemList));
 	}
 

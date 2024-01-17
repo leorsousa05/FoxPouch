@@ -1,20 +1,20 @@
 import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { message, open } from "@tauri-apps/api/dialog";
-import { GamesData } from "./GameList";
 import { convertFileSrc } from "@tauri-apps/api/tauri";
+import { useGamesDataContext } from "../contexts/GamesDataContext";
 
 interface Props {
 	isModalOpen: boolean
 	modalSetter: Dispatch<SetStateAction<boolean>>
-	gameDataSetter: Dispatch<SetStateAction<GamesData>>
 }
 
-export const AddGameModal = ({ isModalOpen, modalSetter, gameDataSetter }: Props) => {
+export const AddGameModal = ({ isModalOpen, modalSetter }: Props) => {
 	const [gameName, setGameName] = useState<string>("");
 	const [gamePath, setGamePath] = useState<string>("");
 	const [gameImage, setGameImage] = useState<string>("");
 	const [isGameSelected, setIsGameSelected] = useState<boolean>(false);
 	const [isImageSelected, setIsImageSelected] = useState<boolean>(false);
+	const { setGamesData } = useGamesDataContext();
 
 	const handleGameName = (e: FormEvent<HTMLInputElement>) => {
 		setGameName(e.currentTarget.value);
@@ -36,7 +36,7 @@ export const AddGameModal = ({ isModalOpen, modalSetter, gameDataSetter }: Props
 			image: gameImage
 		}
 
-		gameDataSetter(gameInfo);
+		setGamesData(gameInfo);
 		setIsGameSelected(false);
 		setIsImageSelected(false);
 		setGameName("");
