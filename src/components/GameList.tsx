@@ -17,9 +17,9 @@ export const GameList = () => {
 			))}
 
 			<AddGameModal isModalOpen={isModalOpen} modalSetter={setIsModalOpen} />
-			<button onClick={() => setIsModalOpen(!isModalOpen)} className="gamelist__addbutton">
-				<FontAwesomeIcon icon={faPlus} />
+			<button onClick={() => setIsModalOpen(!isModalOpen)} className={isModalOpen ? "gamelist__addbutton open" : "gamelist__addbutton"}>
+				< FontAwesomeIcon icon={faPlus} />
 			</button>
-		</div>
+		</div >
 	)
 }

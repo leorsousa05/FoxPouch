@@ -37,7 +37,7 @@ export const GameCard: FC<GameInfo> = ({ gameImage, gameTitle, gamePath }) => {
 
 			<div className="gamecard__button_group">
 				<button onClick={handleExecute} className="gamecard__button_group__button">Start</button>
-				<button onClick={handleDelete} className="gamecard__button_group__button">Delete</button>
+				<button onClick={handleDelete} className="gamecard__button_group__button delete">Delete</button>
 			</div>
 		</div>
 	)

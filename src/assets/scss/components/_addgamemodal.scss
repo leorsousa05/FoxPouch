@@ -22,17 +22,16 @@
 		left: 50%;
 		transform: translate3d(-50%, -50%, 0);
 		flex-direction: column;
-		background-color: #{$--theme-secondary};
+		background-color: #{$--clr-grey};
 
 		&__button {
 			align-self: left;
 			cursor: pointer;
-			color: #{$--theme-foreground};
+			color: #{$--clr-txt};
 			margin: 6px 0 8px 0;
 			font-size: 14px;
 			font-weight: 500;
-			background-color: #{$--theme-primary};
-			border: 1px solid #{$--theme-details};
+			background-color: #{$--clr-primary};
 			border-radius: 2px;
 			width: 180px;
 			padding: 4px 0;
@@ -49,20 +48,18 @@
 		}
 
 		&__text_input {
-			color: #{$--theme-foreground};
+			color: #{$--clr-txt};
 			font-size: 16px;
 			padding: 2px 0;
+			padding-left: 4px;
 			letter-spacing: -2px;
-			background-color: #{$--theme-secondary};
-			border: 2px solid #{$--theme-details};
 			margin: 4px 0 18px 0;
 			outline: none;
 		}
 
 		&__file_input {
-			margin-top: 4px;	
-			border: 2px solid #{$--theme-secondary};
-			box-shadow: 0 0 0 2px #{$--theme-primary};
+			margin-top: 4px;
+			box-shadow: 0 0 0 2px #{$--clr-primary};
 		}
 
 		&__buttons_container {
@@ -70,14 +67,18 @@
 			flex-direction: row;
 			justify-content: space-between;
 
+			.close {
+				background-color: transparent;
+				border: 1px solid #e6e6e6;
+			}
+
 			&__button {
 				cursor: pointer;
-				color: #{$--theme-foreground};
+				color: #{$--clr-txt};
 				margin: 22px 0 12px 0;
 				font-size: 16px;
 				font-weight: 500;
-				background-color: #{$--theme-primary};
-				border: 1px solid #{$--theme-details};
+				background-color: #{$--clr-primary};
 				border-radius: 4px;
 				width: 140px;
 				padding: 10px 0 12px 0;

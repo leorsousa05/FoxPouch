@@ -22,7 +22,6 @@ export const AddGameModal = ({ isModalOpen, modalSetter }: Props) => {
 
 	const handleSubmit = () => {
 
-
 		if (!gamePath && !gameName) {
 			message("Fill up all the fields!", { title: "Fields Missing!", type: "warning" })
 			return
@@ -47,11 +46,15 @@ export const AddGameModal = ({ isModalOpen, modalSetter }: Props) => {
 			const selectedPath = await open({
 				multiple: false,
 				title: "Open Game Executable",
+				filters: [{
+					name: "Executable",
+					extensions: ["exe"]
+				}]
 			});
 			if (selectedPath && typeof selectedPath === "string") {
 				setGamePath(selectedPath);
+				setIsGameSelected(true);
 			}
-			setIsGameSelected(true);
 		} catch (err) {
 			setIsGameSelected(false);
 			console.error(err);
@@ -70,8 +73,8 @@ export const AddGameModal = ({ isModalOpen, modalSetter }: Props) => {
 			});
 			if (selectedPath && typeof selectedPath === "string") {
 				setGameImage(convertFileSrc(selectedPath));
+				setIsImageSelected(true);
 			}
-			setIsImageSelected(true);
 		} catch (err) {
 			setIsImageSelected(false);
 			console.error(err);
@@ -82,7 +85,7 @@ export const AddGameModal = ({ isModalOpen, modalSetter }: Props) => {
 		<div className={`modal ${isModalOpen ? "open" : ""}`}>
 			<div className="modal__container">
 				<label htmlFor="game_name">Game Name</label>
-				<input onInput={handleGameName} value={gameName} name="game_name" className="modal__container__text_input" type="text" />
+				<input placeholder="..." onInput={handleGameName} value={gameName} name="game_name" className="modal__container__text_input" type="text" />
 
 				<label htmlFor="game_file">Game Executable</label>
 				<button onClick={handleFiles} className="modal__container__button">Select The Game</button>
@@ -94,7 +97,7 @@ export const AddGameModal = ({ isModalOpen, modalSetter }: Props) => {
 
 				<div className="modal__container__buttons_container">
 					<button onClick={handleSubmit} className="modal__container__buttons_container__button">Add Game</button>
-					<button onClick={() => modalSetter(!isModalOpen)} className="modal__container__buttons_container__button">Close</button>
+					<button onClick={() => modalSetter(!isModalOpen)} className="modal__container__buttons_container__button close">Close</button>
 				</div>
 			</div>
 		</div>
