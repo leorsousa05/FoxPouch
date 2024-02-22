@@ -12,6 +12,8 @@ export const GamesDataProvider: FC<{ children: ReactNode }> = ({ children }) => 
 		name: "",
 		path: "",
 		image: "",
+		id: "",
+		lastTimePlayed: ""
 	});
 
 	useEffect(() => {
@@ -19,7 +21,9 @@ export const GamesDataProvider: FC<{ children: ReactNode }> = ({ children }) => 
 		const tempGameData: GamesData = {
 			name: gamesData.name,
 			path: gamesData.path,
-			image: gamesData.image
+			image: gamesData.image,
+			id: gamesData.id,
+			lastTimePlayed: gamesData.lastTimePlayed
 		}
 
 		if (Object.values(tempGameData).every(value => value === "")) {
@@ -33,6 +37,11 @@ export const GamesDataProvider: FC<{ children: ReactNode }> = ({ children }) => 
 		});
 
 	}, [gamesData]);
+
+	useEffect(() => {
+		localStorage.setItem("games", JSON.stringify(gamesDataList));
+
+	}, [gamesDataList])
 
 	return (
 		<GamesDataContext.Provider value={{ gamesData, gamesDataList, setGamesData, setGamesDataList }}>

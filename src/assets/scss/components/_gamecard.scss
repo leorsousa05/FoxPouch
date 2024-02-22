@@ -1,67 +1,148 @@
 @import '../themes/dark';
 
 .gamecard {
-	margin: 32px;
-	margin-bottom: 0;
-	width: 240px;
-	display: flex;
-	border-radius: 2px;
-	flex-direction: column;
-	align-items: center;
-	border-radius: 4px;
-	transition: .2s ease-in-out;
+	$self: &;
+	border: 1px solid #{$--clr-grey};
+
+	&--grid {
+		margin: 32px 0 0 0;
+		width: 296px;
+		display: flex;
+		flex-direction: column;
+		padding: 8px;
+		border-radius: 12px;
+		background-color: #{$--clr-grey};
+	}
+
+	&--list {
+		margin-bottom: 0;
+		width: 100%;
+		display: flex;
+		align-items: center;
+		flex-direction: row;
+		border: 1px solid #{$--clr-grey};
+	}
 
 	&__image {
 		width: 100%;
-		image-rendering: pixelated;
-		height: 300px;
+		height: 160px;
 		object-fit: cover;
-		object-position: center;
+		object-position: top;
+		border-radius: 12px;
+
+		#{ $self }--list & {
+			max-width: 200px;
+			height: 100px;
+			border-radius: 0;
+		}
+
 	}
 
-	&__infos {
+	&__container {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		justify-content: space-around;
-		width: 100%;
+		justify-content: space-between;
+		padding: 12px 12px 8px 12px;
+		height: 100%;
 
-		&__title {
-			color: #{$--clr-txt};
-			font-family: #{$--theme-font};
-			font-size: 20px;
-			font-weight: 600;
-			text-align: center;
-			padding: 12px 0;
-		}
-	}
-
-	&__button_group {
-		display: flex;
-		flex-direction: row;
-		margin-bottom: 16px;
-		gap: 12px;
-
-		.delete {
-			background-color: transparent;
-			border: 1px solid white;
+		#{ $self }--list & {
+			width: 100%;
+			padding: 0px 12px 0 12px;
 		}
 
-		&__button {
-			cursor: pointer;
-			background: transparent;
-			color: #{$--clr-txt};
-			background-color: #{$--clr-primary};
-			padding: 6px 8px;
-			border-radius: 2px;
-			border: 0;
-			margin: 0 0 8px 0;
-			transition: .2s transform;
 
-			&:hover {
-				transform: scale(1.1);
+		&__infos {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+
+			#{ $self }--list & {
+				justify-content: center;
+				height: 100%;
 			}
 
+			&__title {
+				color: #{$--clr-txt};
+				font-family: #{$--theme-font};
+				font-size: 14px;
+				font-weight: 500;
+
+			}
+
+			&__time {
+				color: lightgray;
+				font-family: #{$--theme-font};
+				font-size: 12px;
+				font-weight: 500;
+			}
 		}
+
+		&__button_group {
+			display: flex;
+			flex-direction: column;
+
+			#{ $self }--list & {
+				flex-direction: row;
+				align-items: center;
+				gap: 4px;
+			}
+
+			&__button {
+				cursor: pointer;
+				color: #{$--clr-txt};
+				background-color: #{$--clr-primary};
+				padding: 6px 8px;
+				border-radius: 2px;
+				border: 0;
+				margin: 0 0 8px 0;
+				transition: .2s transform;
+
+				#{ $self }--list & {
+					display: flex;
+					align-items: center;
+					padding: 8px 12px;
+					margin: 0;
+					height: fit-content;
+					width: fit-content;
+				}
+
+				&__icon {
+					height: 20px;
+
+
+					&--delete {
+						height: 16px;
+					}
+				}
+
+				&--delete {
+					transition: .2s transform;
+					background-color: transparent;
+					border: 1px solid white;
+					padding: 6px 8px;
+					border-radius: 2px;
+					cursor: pointer;
+					color: #{$--clr-txt};
+
+					#{ $self }--list & {
+						border: 0;
+						height: fit-content;
+						width: fit-content;
+					}
+
+					&:hover {
+						transform: scale(1.1);
+					}
+				}
+
+				&:hover {
+					transform: scale(1.1);
+				}
+
+			}
+		}
+
 	}
+
 }

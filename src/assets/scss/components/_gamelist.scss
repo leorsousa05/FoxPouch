@@ -1,12 +1,63 @@
 @import "../themes/dark";
 
 .gamelist {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 22px;
 	position: relative;
-	height: 100%;
+	width: 100%;
+
+	&__statusline {
+		position: sticky;
+		top: 30px;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		padding: 4px 32px;
+		background-color: #{$--clr-grey};
+
+		&__orientation {
+			display: flex;
+			flex-direction: row;
+			gap: 8px;
+
+			&__item {
+				height: 20px;
+				width: 20px;
+				background-color: #{$--clr-black};
+				padding: 4px;
+				border-radius: 4px;
+				cursor: pointer;
+
+				&--active {
+					height: 20px;
+					width: 20px;
+					background-color: #{$--clr-primary};
+					padding: 4px;
+					border-radius: 4px;
+					cursor: pointer;
+				}
+
+				&__icon {
+					height: 100%;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: row;
+		padding: 30px 32px;
+		flex-wrap: wrap;
+		gap: 22px;
+
+		&--listmode {
+			display: flex;
+			flex-direction: row;
+			padding: 30px 0;
+			flex-wrap: wrap;
+		}
+	}
 
 	&__addbutton.open {
 		transform: rotate(45deg);

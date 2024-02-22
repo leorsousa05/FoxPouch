@@ -2,6 +2,7 @@ import { Dispatch, FormEvent, SetStateAction, useState } from "react";
 import { message, open } from "@tauri-apps/api/dialog";
 import { convertFileSrc } from "@tauri-apps/api/tauri";
 import { useGamesDataContext } from "../contexts/GamesDataContext";
+import { GamesData } from "../@types/gamesdata";
 
 interface Props {
 	isModalOpen: boolean
@@ -29,10 +30,12 @@ export const AddGameModal = ({ isModalOpen, modalSetter }: Props) => {
 
 		modalSetter(!isModalOpen);
 
-		let gameInfo = {
+		let gameInfo: GamesData = {
 			name: gameName.toLowerCase(),
 			path: gamePath,
-			image: gameImage
+			image: gameImage,
+			id: crypto.randomUUID(),
+			lastTimePlayed: "Don't played yet"
 		}
 
 		setGamesData(gameInfo);
