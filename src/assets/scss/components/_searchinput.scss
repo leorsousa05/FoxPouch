@@ -1,0 +1,30 @@
+@import "../themes/dark";
+
+.search_input {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 12px;
+
+	&__input {
+		color: #{$--clr-black};
+		font-size: 16px;
+		padding: 6px 0 6px 4px;
+		letter-spacing: -2px;
+		outline: none;
+		border-radius: 4px 0 0 4px;
+	}
+
+	&__icon {
+		background-color: #{$--clr-primary};
+		padding: 8px 10px;
+		border-radius: 0 4px 4px 0;
+		cursor: pointer;
+		transition: .2s transform;
+
+		&:hover {
+			transform: scale(1.05);
+		}
+
+	}
+}

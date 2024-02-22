@@ -46,6 +46,9 @@
 			"protocol": {
 				"all": true,
 				"assetScope": ["**"]
+			},
+			"http": {
+				"scope": ["https://www.steamgriddb.com/api/v2/search/autocomplete/*"]
 			}
 		},
 		"bundle": {

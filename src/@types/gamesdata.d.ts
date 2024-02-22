@@ -8,6 +8,12 @@ export interface GamesData {
 	lastTimePlayed: string
 }
 
+export interface ApiGameList {
+	id: number,
+	name: string,
+	verified: boolean,
+	types: []
+}
 
 export interface GamesDataContextType {
 	gamesData: GamesData
