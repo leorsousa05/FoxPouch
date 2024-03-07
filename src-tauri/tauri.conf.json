@@ -48,7 +48,7 @@
 				"assetScope": ["**"]
 			},
 			"http": {
-				"scope": ["https://www.steamgriddb.com/api/v2/search/autocomplete/*"]
+				"scope": ["https://www.steamgriddb.com/api/v2/search/autocomplete/*", "https://www.steamgriddb.com/api/v2/heroes/game/*", "https://www.steamgriddb.com/api/v2/grids/game/*"]
 			}
 		},
 		"bundle": {

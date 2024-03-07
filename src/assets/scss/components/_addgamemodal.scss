@@ -33,7 +33,7 @@
 		&__gamelist {
 			position: absolute;
 			background-color: #{$--clr-grey};
-			top: 21%;
+			top: 27%;
 			left: 4.1%;
 			border-radius: 0 0 5px 5px;
 			border-top: none;
@@ -113,6 +113,19 @@
 				width: 140px;
 				padding: 10px 0 12px 0;
 				transition: .2s transform;
+
+				&--disabled {
+					cursor: not-allowed;
+					color: #ffffff60;
+					margin: 22px 0 12px 0;
+					font-size: 16px;
+					font-weight: 500;
+					background-color: #{$--clr-disabled-btn};
+					border-radius: 4px;
+					width: 140px;
+					padding: 10px 0 12px 0;
+					transition: .2s transform;
+				}
 
 				&:hover {
 					transform: scale(1.05);

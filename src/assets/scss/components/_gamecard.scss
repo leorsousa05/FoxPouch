@@ -24,15 +24,19 @@
 	}
 
 	&__image {
+		user-select: none;
 		width: 100%;
-		height: 160px;
+		min-height: 160px;
+		max-height: 160px;
 		object-fit: cover;
-		object-position: top;
+		object-position: center;
 		border-radius: 12px;
 
 		#{ $self }--list & {
+			user-select: none;
 			max-width: 200px;
 			height: 100px;
+			min-height: 0;
 			border-radius: 0;
 		}
 
