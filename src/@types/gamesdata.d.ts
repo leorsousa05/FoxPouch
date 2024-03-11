@@ -6,6 +6,7 @@ export interface GamesData {
 	image: string
 	id: string
 	lastTimePlayed: string
+	timePlayed: number
 }
 
 

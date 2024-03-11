@@ -13,7 +13,8 @@ export const GamesDataProvider: FC<{ children: ReactNode }> = ({ children }) => 
 		path: "",
 		image: "",
 		id: "",
-		lastTimePlayed: ""
+		lastTimePlayed: "",
+		timePlayed: 0
 	});
 
 	useEffect(() => {
@@ -23,10 +24,11 @@ export const GamesDataProvider: FC<{ children: ReactNode }> = ({ children }) => 
 			path: gamesData.path,
 			image: gamesData.image,
 			id: gamesData.id,
-			lastTimePlayed: gamesData.lastTimePlayed
+			lastTimePlayed: gamesData.lastTimePlayed,
+			timePlayed: gamesData.timePlayed
 		}
 
-		if (Object.values(tempGameData).every(value => value === "")) {
+		if (Object.values(tempGameData).every(value => !value)) {
 			return;
 		}
 

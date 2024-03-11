@@ -64,6 +64,19 @@
 			#{ $self }--list & {
 				justify-content: center;
 				height: 100%;
+
+				&__items {
+					display: flex;
+					flex-direction: row;
+					gap: 16px;
+					
+					h2 { 
+						color: lightgray;
+						font-family: #{$--theme-font};
+						font-size: 12px;
+						font-weight: 500;
+					}
+				}
 			}
 
 			&__title {

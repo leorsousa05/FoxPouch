@@ -43,7 +43,8 @@ export const AddGameModal = ({ isModalOpen, modalSetter }: Props) => {
 			path: gamePath,
 			image: gameImage,
 			id: crypto.randomUUID(),
-			lastTimePlayed: "Don't played yet"
+			lastTimePlayed: "Don't played yet",
+			timePlayed: 0
 		}
 
 		setGamesData(gameInfo);

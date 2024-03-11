@@ -39,7 +39,7 @@ export const ApiGamesProvider: FC<{ children: ReactNode }> = ({ children }) => {
 	}
 
 	const getHeroOnApi = async () => {
-		const response = await fetch(`https://www.steamgriddb.com/api/v2/grids/game/${gameSelected.id}?dimensions=920x430,460x215,512x512,1024x1024,342x482`, {
+		const response = await fetch(`https://www.steamgriddb.com/api/v2/grids/game/${gameSelected.id}?dimensions=920x430,460x215,512x512,1024x1024,342x482,660x930,600x900`, {
 			method: "GET",
 			headers: {
 				"authorization": token,

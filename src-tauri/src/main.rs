@@ -4,18 +4,27 @@ use std::process::Command;
 use tauri::{
     CustomMenuItem, Manager, SystemTray, SystemTrayEvent, SystemTrayMenu, SystemTrayMenuItem,
 };
+use tokio::{sync::mpsc, time::Instant};
 
 #[tauri::command]
-fn execute_game(app: tauri::AppHandle, path: String) {
+async fn execute_game(app: tauri::AppHandle, path: String) -> String {
     let path_buf = PathBuf::from(path);
+    let (tx, mut rx) = mpsc::channel(1);
 
-    let _ = Command::new(&path_buf)
+    let child = Command::new(&path_buf)
         .current_dir(path_buf.parent().unwrap())
         .spawn()
         .expect("Failed to execute");
+    let start = Instant::now();
 
-    let window = app.get_window("main").unwrap();
-    window.hide().unwrap();
+    let _ = tokio::spawn(async move {
+        match child.wait_with_output() {
+            Ok(_) => tx.send(start.elapsed().as_secs()).await.expect("Error"),
+            Err(e) => eprintln!("Error executing the task"),
+        }
+    });
+
+    format!("{:.0?}", rx.recv().await.unwrap()).to_string()
 }
 
 fn main() {
@@ -55,4 +64,3 @@ fn main() {
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
-

@@ -3,7 +3,7 @@ import { GameCard } from "./GameCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AddGameModal } from "./AddGameModal";
 import { useState } from "react";
-import { useGamesDataContext } from "../contexts/GamesDataContext";
+import { useGamesDataContext } from "../contexts/GamesDataContext.tsx";
 
 export enum OrientationModes {
 	GridMode,
@@ -33,7 +33,7 @@ export const GameList = () => {
 
 			<div className={orientationMode === OrientationModes.ListMode ? "gamelist__list--listmode" : "gamelist__list"}>
 				{gamesDataList?.map((game) => (
-					<GameCard orientation={orientationMode} image={game.image} name={game.name} path={game.path} id={game.id} lastTimePlayed={game.lastTimePlayed} key={game.id} />
+					<GameCard orientation={orientationMode} image={game.image} name={game.name} path={game.path} id={game.id} lastTimePlayed={game.lastTimePlayed} timePlayed={game.timePlayed} key={game.id} />
 				))}
 			</div>
 
