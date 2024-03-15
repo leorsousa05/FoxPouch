@@ -1,0 +1,48 @@
+name: release 📦
+
+on:
+  push:
+    branches: 
+      - 'release/**'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  release-matrix:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [macos-latest, ubuntu-20.04, windows-latest]
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: ⚙️ setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 🦀 install rust stable
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: ⤵️ install dependencies (ubuntu only)
+        if: matrix.platform == 'ubuntu-20.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libappindicator3-dev librsvg2-dev patchelf
+
+      - name: ⚙️ install frontend dependencies
+        run: npm install
+
+      - name: ⬆️ publish package
+        uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tagName: v__VERSION__
+          releaseName: "v__VERSION__"
+          releaseDraft: false
+          prerelease: false
